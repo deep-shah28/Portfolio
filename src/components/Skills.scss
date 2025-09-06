@@ -1,0 +1,341 @@
+.skills {
+  background: var(--primary-bg);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(
+        circle at 20% 50%,
+        rgba(0, 212, 255, 0.03) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(0, 212, 255, 0.02) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+  }
+
+  &-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  &-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    font-weight: 400;
+  }
+
+  &-section {
+    margin-top: 3rem;
+
+    &-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2.5rem;
+      text-align: center;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 2px;
+        background: var(--gradient);
+      }
+    }
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    perspective: 1000px;
+  }
+}
+
+.expertise {
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+  }
+
+  &-card {
+    background: linear-gradient(
+      135deg,
+      var(--secondary-bg) 0%,
+      rgba(26, 26, 26, 0.8) 100%
+    );
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 212, 255, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+      &::before {
+        transform: translateX(0);
+      }
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+.skill {
+  &-item {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+    transform-style: preserve-3d;
+    overflow: hidden;
+
+    &:hover {
+      .skill-border {
+        opacity: 1;
+      }
+    }
+
+    // Category-specific styling
+    &[data-category='language'] .skill-icon {
+      background: rgba(0, 212, 255, 0.1);
+    }
+
+    &[data-category='frontend'] .skill-icon {
+      background: rgba(97, 218, 251, 0.1);
+    }
+
+    &[data-category='backend'] .skill-icon {
+      background: rgba(104, 211, 145, 0.1);
+    }
+
+    &[data-category='database'] .skill-icon {
+      background: rgba(246, 173, 85, 0.1);
+    }
+
+    &[data-category='devops'] .skill-icon {
+      background: rgba(252, 129, 129, 0.1);
+    }
+
+    &[data-category='tools'] .skill-icon {
+      background: rgba(183, 148, 246, 0.1);
+    }
+  }
+
+  &-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle,
+      rgba(0, 212, 255, 0.1) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: var(--transition);
+    pointer-events: none;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  &-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    transition: var(--transition);
+    flex-shrink: 0;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+  }
+
+  &-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  &-experience {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+  }
+
+  &-level {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      transparent,
+      rgba(0, 212, 255, 0.2),
+      transparent
+    );
+    opacity: 0;
+    transition: var(--transition);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      right: 1px;
+      bottom: 1px;
+      background: var(--secondary-bg);
+      border-radius: 11px;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .skills-header {
+    margin-bottom: 3rem;
+  }
+
+  .skills-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .expertise-card {
+    padding: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .skill-item {
+    padding: 1.25rem;
+  }
+
+  .skill-content {
+    gap: 0.75rem;
+  }
+
+  .skill-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .expertise-card {
+    padding: 1.25rem;
+  }
+
+  .expertise-card h3 {
+    font-size: 1rem;
+  }
+
+  .expertise-card p {
+    font-size: 0.9rem;
+  }
+
+  .skill-item {
+    padding: 1rem;
+  }
+
+  .skill-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  .skill-name {
+    font-size: 0.95rem;
+  }
+
+  .skill-experience {
+    font-size: 0.8rem;
+  }
+
+  .skill-level {
+    font-size: 0.75rem;
+  }
+}
