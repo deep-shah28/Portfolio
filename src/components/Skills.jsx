@@ -43,11 +43,9 @@ const Skills = () => {
     { name: 'GraphQL', icon: SiGraphql, years: 2, category: 'backend' },
     { name: 'MongoDB', icon: SiMongodb, years: 3, category: 'database' },
     { name: 'PostgreSQL', icon: SiPostgresql, years: 2, category: 'database' },
-    { name: 'Redis', icon: SiRedis, years: 2, category: 'database' },
     { name: 'Git', icon: FaGitAlt, years: 4, category: 'tools' },
-    { name: 'Docker', icon: FaDocker, years: 2, category: 'tools' },
-    { name: 'AWS', icon: FaAws, years: 2, category: 'tools' },
     { name: 'Jest', icon: SiJest, years: 3, category: 'tools' },
+    { name: 'Webpack', icon: SiWebpack, years: 3, category: 'tools' },
     { name: 'Vite', icon: SiVite, years: 3, category: 'tools' },
   ]
 
@@ -80,26 +78,24 @@ const Skills = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate skills grid
-      if (skillsGridRef.current?.children) {
-        gsap.fromTo(
-          skillsGridRef.current.children,
-          { opacity: 0, y: 30, scale: 0.8 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: 'back.out(1.7)',
-            scrollTrigger: {
-              trigger: skillsGridRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none none',
-            },
-          }
-        )
-      }
+      // Animate experience cards
+      gsap.fromTo(
+        experienceRef.current.children,
+        { opacity: 0, y: 30, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 70%',
+            toggleActions: 'play none none none',
+          },
+        }
+      )
 
       // Animate skill items with magnetic effect
       const skillItems = skillsGridRef.current.querySelectorAll('.skill-item')

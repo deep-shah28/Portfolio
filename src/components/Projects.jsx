@@ -17,7 +17,7 @@ const Projects = () => {
       description: "A comprehensive e-commerce platform where users can earn money by uploading reels and shop with their earnings. Features advanced payment integration with Stripe and multi-panel architecture.",
       image: "/api/placeholder/400/250",
       technologies: ["React", "Node.js", "Stripe", "MongoDB", "Express"],
-      highlights: ["Stripe Integration", "Reel Upload System", "Multi-Panel Design", "Earning System"],
+      highlights: ["💳 Stripe Integration", "🎬 Reel Upload System", "👥 Multi-Panel Design", "💰 Earning System"],
       featured: true,
       category: "Full Stack",
       duration: "Feb 2023 - Dec 2024"
@@ -28,7 +28,7 @@ const Projects = () => {
       description: "Advanced web application integrating React frontend with Unreal Engine's 3D visualization and Azure Maps for interactive mapping solutions with gaming-grade graphics.",
       image: "/api/placeholder/400/250",
       technologies: ["React", "Unreal Engine", "Azure Maps", "REST APIs"],
-      highlights: ["3D Rendering", "Azure Maps API", "Real-time Visualization", "Interactive Mapping"],
+      highlights: ["🎮 3D Rendering", "🗺️ Azure Maps API", "⚡ Real-time Visualization", "🔄 Interactive Mapping"],
       featured: true,
       category: "Advanced Tech",
       duration: "Mar 2024 - May 2024"
@@ -39,7 +39,7 @@ const Projects = () => {
       description: "Custom React-based meeting management dashboard with interactive data visualizations, real-time updates, and automated report generation for efficient meeting tracking.",
       image: "/api/placeholder/400/250",
       technologies: ["React", "Chart.js", "Node.js", "WebSocket"],
-      highlights: ["Data Visualization", "Real-time Updates", "Auto Reports", "Metrics Tracking"],
+      highlights: ["📊 Data Visualization", "⚡ Real-time Updates", "🤖 Auto Reports", "📈 Metrics Tracking"],
       featured: true,
       category: "Dashboard",
       duration: "May 2024"
@@ -81,26 +81,24 @@ const Projects = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate projects on scroll
-      if (projectsRef.current?.children) {
-        gsap.fromTo(
-          projectsRef.current.children,
-          { opacity: 0, y: 50, scale: 0.9 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: projectsRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none none',
-            },
-          }
-        )
-      }
+      // Animate project cards
+      gsap.fromTo(
+        projectsRef.current.children,
+        { opacity: 0, y: 50, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 70%',
+            toggleActions: 'play none none none',
+          },
+        }
+      )
     }, sectionRef)
 
     return () => ctx.revert()

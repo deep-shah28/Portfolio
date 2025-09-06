@@ -16,7 +16,6 @@ const About = () => {
     { icon: FiCode, number: 20, label: 'Projects Completed', suffix: '+' },
     { icon: FiUsers, number: 15, label: 'Happy Clients', suffix: '+' },
     { icon: FiAward, number: 4, label: 'Years Experience', suffix: '+' },
-    { icon: FiCoffee, number: 500, label: 'Cups of Coffee', suffix: '+' },
   ]
 
   useEffect(() => {
@@ -60,48 +59,44 @@ const About = () => {
 
       // Animate stats with counter effect
       stats.forEach((stat, index) => {
-        const statElement = statsRef.current?.children[index]
-        if (!statElement) return
-        
+        const statElement = statsRef.current.children[index]
         const numberElement = statElement.querySelector('.stat-number')
-        
+
         gsap.fromTo(
           statElement,
           { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.6,
             delay: index * 0.1,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: statsRef.current,
               start: 'top 80%',
-              toggleActions: 'play none none none',
+              end: 'bottom 20%',
+              toggleActions: 'play none none reverse',
             },
           }
         )
-        
+
         // Counter animation
-        if (numberElement) {
-          gsap.fromTo(
-            { value: 0 },
-            {
-              value: stat.number,
-              duration: 2,
-              delay: 0.5 + index * 0.1,
-              ease: 'power2.out',
-              onUpdate: function() {
-                numberElement.textContent = Math.floor(this.targets()[0].value)
-              },
-              scrollTrigger: {
-                trigger: statsRef.current,
-                start: 'top 80%',
-                toggleActions: 'play none none none',
-              },
-            }
-          )
-        }
+        gsap.fromTo(
+          numberElement,
+          { textContent: 0 },
+          {
+            textContent: stat.number,
+            duration: 2,
+            ease: 'power2.out',
+            snap: { textContent: 1 },
+            scrollTrigger: {
+              trigger: statsRef.current,
+              start: 'top 80%',
+              end: 'bottom 20%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        )
       })
     }, sectionRef)
 
