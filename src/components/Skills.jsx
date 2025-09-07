@@ -35,7 +35,6 @@ const Skills = () => {
   const coreSkills = [
     { name: 'JavaScript', icon: FaJsSquare, years: 4, category: 'language' },
     { name: 'TypeScript', icon: SiTypescript, years: 3, category: 'language' },
-    { name: 'Python', icon: FaPython, years: 3, category: 'language' },
     { name: 'React', icon: FaReact, years: 4, category: 'frontend' },
     { name: 'Next.js', icon: SiNextdotjs, years: 2, category: 'frontend' },
     { name: 'Node.js', icon: FaNodeJs, years: 4, category: 'backend' },
